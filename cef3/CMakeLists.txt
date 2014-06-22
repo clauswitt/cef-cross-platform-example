@@ -1,0 +1,7 @@
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    add_subdirectory (mac)
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    add_subdirectory (linux)
+elseif (WIN32)
+    add_subdirectory (win)
+endif ()

@@ -1,0 +1,96 @@
+# Use the package PkgConfig to detect GTK+ headers/library files
+find_package (PkgConfig REQUIRED)
+pkg_check_modules (GTK2 REQUIRED gtk+-2.0)
+
+set (LIBCEF_DLL_PATH "${arch}/libcef_dll")
+
+include_directories (${GTK2_INCLUDE_DIRS} ${LIBCEF_DLL_PATH}/..)
+add_definitions(-DUSING_CEF_SHARED)
+add_library (cef_dll_wrapper
+    ${LIBCEF_DLL_PATH}/cpptoc/app_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/browser_process_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/client_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/completion_callback_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/context_menu_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/cookie_visitor_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/dialog_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/display_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/domevent_listener_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/domvisitor_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/download_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/drag_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/end_tracing_callback_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/focus_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/geolocation_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/get_geolocation_callback_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/jsdialog_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/keyboard_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/life_span_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/load_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/read_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/render_process_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/request_context_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/request_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/resource_bundle_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/resource_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/run_file_dialog_callback_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/scheme_handler_factory_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/string_visitor_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/task_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/urlrequest_client_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/v8accessor_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/v8handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/web_plugin_info_visitor_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/web_plugin_unstable_callback_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/cpptoc/write_handler_cpptoc.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/allow_certificate_error_callback_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/auth_callback_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/before_download_callback_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/binary_value_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/browser_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/browser_host_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/callback_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/command_line_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/context_menu_params_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/cookie_manager_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/dictionary_value_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/domdocument_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/domevent_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/domnode_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/download_item_callback_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/download_item_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/drag_data_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/file_dialog_callback_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/frame_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/geolocation_callback_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/jsdialog_callback_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/list_value_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/menu_model_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/post_data_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/post_data_element_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/process_message_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/quota_callback_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/request_context_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/request_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/response_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/scheme_registrar_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/stream_reader_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/stream_writer_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/task_runner_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/urlrequest_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/v8context_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/v8exception_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/v8stack_frame_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/v8stack_trace_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/v8value_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/web_plugin_info_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/xml_reader_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/ctocpp/zip_reader_ctocpp.cc
+    ${LIBCEF_DLL_PATH}/wrapper/cef_byte_read_handler.cc
+    ${LIBCEF_DLL_PATH}/wrapper/cef_message_router.cc
+    ${LIBCEF_DLL_PATH}/wrapper/cef_stream_resource_handler.cc
+    ${LIBCEF_DLL_PATH}/wrapper/cef_xml_object.cc
+    ${LIBCEF_DLL_PATH}/wrapper/cef_zip_archive.cc
+    ${LIBCEF_DLL_PATH}/wrapper/libcef_dll_wrapper.cc
+    ${LIBCEF_DLL_PATH}/wrapper/libcef_dll_wrapper2.cc
+    ${LIBCEF_DLL_PATH}/transfer_util.cpp)
